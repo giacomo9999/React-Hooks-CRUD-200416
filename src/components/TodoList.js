@@ -9,14 +9,21 @@ export default function TodoList() {
     <div className="container-outer">
       <div className="container-inner">
         <h2>{title}</h2>
-        <ul>
+        <table>
           {state.todos.map((todo) => (
-            <li key={todo.id}>
-              <span>{todo.text}</span>
-            </li>
+            <tr key={todo.id}>
+              <td>{todo.text}</td>
+              <td>
+                <i className="fa fa-edit"></i>
+              </td>
+              <td>
+                <i className="fa fa-trash-o"></i>
+              </td>
+            </tr>
           ))}
-        </ul>
+        </table>
       </div>
     </div>
   );
 }
+
