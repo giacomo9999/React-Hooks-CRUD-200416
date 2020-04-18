@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import TodosContext from "../context";
 
 export default function TodoList() {
-  const { state } = useContext(TodosContext);
+  const { state, dispatch } = useContext(TodosContext);
   const title =
     state.todos.length > 0 ? `${state.todos.length} Items` : `No Items In List`;
   return (
@@ -12,7 +12,14 @@ export default function TodoList() {
         <table>
           {state.todos.map((todo) => (
             <tr key={todo.id}>
-              <td>{todo.text}</td>
+              <td className={``}
+                onDoubleClick={() =>
+                  dispatch({ type: "TOGGLE_TODO", payload: todo })
+                }
+
+              >
+                {todo.text}
+              </td>
               <td>
                 <i className="fa fa-edit"></i>
               </td>
@@ -26,4 +33,3 @@ export default function TodoList() {
     </div>
   );
 }
-
